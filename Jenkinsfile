@@ -17,7 +17,7 @@ pipeline {
         stage('Build Maven Project') {
             steps {
                 // Build the Java application using Maven
-                sh 'mvn clean package'
+                bat 'mvn clean package' // Use 'bat' for Windows
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    sh 'docker build -t ${IMAGE_NAME}:latest .'
+                    bat "docker build -t ${IMAGE_NAME}:latest ." // Use 'bat' for Windows
                 }
             }
         }
@@ -34,10 +34,10 @@ pipeline {
             steps {
                 script {
                     // Log in to Docker Hub
-                    sh 'echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin'
+                    bat "echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin" // Use 'bat' for Windows
 
                     // Push the Docker image to Docker Hub
-                    sh 'docker push ${IMAGE_NAME}:latest'
+                    bat "docker push ${IMAGE_NAME}:latest" // Use 'bat' for Windows
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
     post {
         always {
             // Clean up Docker images after the build
-            sh 'docker rmi ${IMAGE_NAME}:latest'
+            bat "docker rmi ${IMAGE_NAME}:latest" // Use 'bat' for Windows
         }
     }
 }
