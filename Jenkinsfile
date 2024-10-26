@@ -3,14 +3,14 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Define your Docker Hub credentials in Jenkins
-        IMAGE_NAME = 'your-dockerhub-username/java-docker-app'
+        IMAGE_NAME = 'atharva0507/java-docker-app'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
                 // Clone the repository
-                git 'https://github.com/your-github-username/java-docker-app.git'
+                git 'https://github.com/Atharva-5/java-docker-app.git'
             }
         }
 
