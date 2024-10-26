@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Define your Docker Hub credentials in Jenkins
+        DOCKERHUB_CREDENTIALS = credentials('d935a6f9-4227-4272-be8e-18e237109a8c')  // Define your Docker Hub credentials in Jenkins
         IMAGE_NAME = 'atharva0507/java-docker-app'
     }
 
